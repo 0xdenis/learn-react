@@ -2,20 +2,27 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CreateExpense from "./routes/CreateExpense";
 import Expenses from "./routes/Expenses";
 import Expense from "./routes/Expense";
+import Header from "./components/Header";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Expenses />,
+      element: <Header />,
       children: [
         {
-          path: "/create",
-          element: <CreateExpense />,
-        },
-        {
-          path: "/expense",
-          element: <Expense />,
+          path: "/",
+          element: <Expenses />,
+          children: [
+            {
+              path: "/create",
+              element: <CreateExpense />,
+            },
+            {
+              path: "/expense",
+              element: <Expense />,
+            },
+          ],
         },
       ],
     },
